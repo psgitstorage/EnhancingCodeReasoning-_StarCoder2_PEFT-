@@ -1,2 +1,14 @@
 # EnhancingCodeReasoning-_StarCoder2_PEFT-
 Enhancing Code Reasoning in StarCoder2 Using Parameter-Efficient Fine-Tuning
+
+Abstract
+This paper explores the fine-tuning of the StarCoder2-3B large language model using parameter-efficient fine-tuning (PEFT) techniques specifically QLoRA and LoRA on the NVIDIA/OpenCodeReasoning dataset. This dataset comprises over 175,000 synthetic samples designed to simulate competitive programming and reasoning tasks such as code explanation, bug identification, and algorithmic logic interpretation. We demonstrate the feasibility of applying supervised fine-tuning (SFT) on a subset of 10,000 samples using a single consumer-grade GPU (24–48 GB) while maintaining efficiency and performance. The model was trained for up to 2175 steps, with most of the useful learning occurring by step 500, beyond which loss reduction was marginal (<0.05). Training loss decreased from over 3.5 to around 1.3–1.5, and qualitative evaluation revealed marked improvements in the model’s ability to generate coherent and context-aware reasoning outputs. These findings underscore the practicality of QLoRA for resource-constrained environments and highlight StarCoder2’s adaptability to real-world code reasoning applications.
+Introduction
+StarCoder2 is the next generation of transparently trained, open large language models (LLMs) for code generation, released by the BigCode project. It comes in three parameter sizes 3B, 7B, and 15B and is trained on 17 programming languages from The Stack v2 dataset, excluding opt-out requests. StarCoder2 also uses Fill-in-the-Middle (FIM) training and multi-query attention to enhance its ability to generate and reason about code in various contexts.
+
+Large Language Models (LLMs) have transformed natural language understanding and code synthesis tasks. However, domain-specific reasoning tasks such as those found in competitive programming, algorithmic challenges, and code debugging continue to pose significant challenges due to their structured logic and multi-step inference requirements.
+
+In this study, we fine-tune the StarCoder2-3B model using QLoRA (Quantized Low-Rank Adaptation), a memory- and compute-efficient parameter-efficient fine-tuning (PEFT) approach. QLoRA combines 4-bit quantization with trainable low-rank adapters, making it feasible to fine-tune large models on consumer-grade GPUs without compromising performance.
+
+We apply supervised fine-tuning (SFT) using a 10,000-sample subset of NVIDIA’s OpenCodeReasoning dataset a curated collection of synthetic reasoning tasks derived from real-world programming challenges. The fine-tuned model is evaluated not only for training efficiency but also for its enhanced ability to perform structured reasoning. Real-world use cases include applications such as AI teaching assistants, automated code reviewers, and intelligent software debugging tools.
+
